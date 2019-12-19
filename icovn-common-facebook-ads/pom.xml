@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>icovn-java-common</artifactId>
+    <groupId>com.github.icovn</groupId>
+    <version>1.0-RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>icovn-common-facebook-ads</artifactId>
+
+  <dependencies>
+    <!--SPRING-BASE-->
+    <dependency>
+      <artifactId>dependency-spring-base</artifactId>
+      <groupId>com.github.icovn</groupId>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <artifactId>icovn-common-queue</artifactId>
+      <groupId>com.github.icovn</groupId>
+    </dependency>
+
+    <!--FACEBOOK-API-->
+    <dependency>
+      <groupId>com.facebook.business.sdk</groupId>
+      <artifactId>facebook-java-business-sdk</artifactId>
+    </dependency>
+
+    <!--BUS-->
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-bus</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-core</artifactId>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,46 @@
+<included>
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+  <!-- This is the kafkaAppender -->
+  <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+    <encoder>
+      <pattern>${KAFKA_APPLICATION} ${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}</pattern>
+    </encoder>
+    <topic>${KAFKA_TOPIC}</topic>
+    <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy" />
+    <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+
+    <!-- Optional parameter to use a fixed partition -->
+    <!-- <partition>0</partition> -->
+
+    <!-- Optional parameter to include log timestamps into the kafka message -->
+    <!-- <appendTimestamp>true</appendTimestamp> -->
+
+    <!-- each <producerConfig> translates to regular kafka-client config (format: key=value) -->
+    <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#newproducerconfigs -->
+    <!-- bootstrap.servers is the only mandatory producerConfig -->
+    <producerConfig>bootstrap.servers=${KAFKA_SERVERS}</producerConfig>
+    <!-- don't wait for a broker to ack the reception of a batch.  -->
+    <producerConfig>acks=0</producerConfig>
+    <!-- wait up to 1000ms and collect log messages before sending them as a batch -->
+    <producerConfig>linger.ms=1000</producerConfig>
+    <!-- even if the producer buffer runs full, do not block the application but start to drop messages -->
+    <producerConfig>max.block.ms=0</producerConfig>
+    <!-- define a client-id that you use to identify yourself against the kafka broker -->
+    <producerConfig>client.id=${HOSTNAME}-${CONTEXT_NAME}-logback-relaxed</producerConfig>
+    <!-- DeliveryStrategy does block if the producers send buffer is full (this can happen if the connection to the broker gets lost). To avoid even this blocking, enable the producerConfig block.on.buffer.full=false-->
+    <producerConfig>block.on.buffer.full=false</producerConfig>
+
+    <!-- this is the fallback appender if kafka is not available. -->
+    <appender-ref ref="CONSOLE" />
+  </appender>
+
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="kafkaAppender" />
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="ASYNC" />
+  </root>
+</included>

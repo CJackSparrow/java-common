@@ -1,0 +1,22 @@
+<configuration>
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <providers>
+        <provider class="com.github.icovn.common.CustomStackTraceJsonProvider">
+          <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+            <maxDepthPerThrowable>full</maxDepthPerThrowable>
+            <maxLength>full</maxLength>
+            <shortenedClassNameLength>20</shortenedClassNameLength>
+            <rootCauseFirst>true</rootCauseFirst>
+          </throwableConverter>
+        </provider>
+      </providers>
+    </encoder>
+  </appender>
+  <logger name="jsonLogger" additivity="false" level="INFO">
+    <appender-ref ref="consoleAppender"/>
+  </logger>
+  <root level="INFO">
+    <appender-ref ref="consoleAppender"/>
+  </root>
+</configuration>

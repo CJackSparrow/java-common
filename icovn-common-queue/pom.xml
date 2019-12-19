@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>icovn-java-common</artifactId>
+    <groupId>com.github.icovn</groupId>
+    <version>1.0-RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>icovn-common-queue</artifactId>
+
+  <dependencies>
+    <!--SPRING-BASE-->
+    <dependency>
+      <artifactId>dependency-spring-base</artifactId>
+      <groupId>com.github.icovn</groupId>
+      <type>pom</type>
+    </dependency>
+
+    <!--AMQP-->
+    <dependency>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <!--REDIS-->
+    <dependency>
+      <artifactId>spring-data-redis</artifactId>
+      <groupId>org.springframework.data</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>jedis</artifactId>
+      <groupId>redis.clients</groupId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

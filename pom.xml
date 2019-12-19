@@ -8,7 +8,30 @@
   <artifactId>icovn-java-common</artifactId>
   <version>1.0-RELEASE</version>
   <modules>
+    <module>dependency-container</module>
+    <module>dependency-spring-base</module>
+
+    <module>icovn-common-aop</module>
+    <module>icovn-common-api</module>
+    <module>icovn-common-aws-s3</module>
+    <module>icovn-common-elasticsearch</module>
+    <module>icovn-common-email</module>
+    <module>icovn-common-facebook-ads</module>
+    <module>icovn-common-ftp</module>
+    <module>icovn-common-google-ads</module>
+    <module>icovn-common-google-auth</module>
+    <module>icovn-common-google-drive</module>
+    <module>icovn-common-google-mail</module>
+    <module>icovn-common-http</module>
+    <module>icovn-common-job</module>
+    <module>icovn-common-logging</module>
+    <module>icovn-common-queue</module>
+    <module>icovn-common-redis</module>
+    <module>icovn-common-service</module>
+    <module>icovn-common-sftp</module>
+    <module>icovn-common-ssh</module>
     <module>icovn-common-util</module>
+
     <module>try-custom-repository</module>
   </modules>
 
@@ -20,7 +43,180 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <facebook.api.version>3.2.9</facebook.api.version>
+    <google.api.version>1.23.0</google.api.version>
+    <google.api.drive.version>v3-rev110-1.23.0</google.api.drive.version>
+    <reactor.bus.version>2.0.8.RELEASE</reactor.bus.version>
+    <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+    <spring.cloud.version>Hoxton.RELEASE</spring.cloud.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>dependency-container</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <type>pom</type>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>dependency-spring-base</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <type>pom</type>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>icovn-common-aop</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-api</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-aws-s3</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-elasticsearch</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-email</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-facebook-ads</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-ftp</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-google-ads</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-google-auth</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-google-drive</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-google-mail</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-http</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-job</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-logging</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-queue</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-redis</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-service</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-sftp</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-ssh</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>icovn-common-util</artifactId>
+        <groupId>com.github.icovn</groupId>
+        <version>2.47-RELEASE</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>${spring.boot.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <groupId>org.springframework.cloud</groupId>
+        <scope>import</scope>
+        <type>pom</type>
+        <version>${spring.cloud.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.facebook.business.sdk</groupId>
+        <artifactId>facebook-java-business-sdk</artifactId>
+        <version>${facebook.api.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>${google.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.oauth-client</groupId>
+        <artifactId>google-oauth-client-jetty</artifactId>
+        <version>${google.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.apis</groupId>
+        <artifactId>google-api-services-drive</artifactId>
+        <version>${google.api.drive.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.projectreactor</groupId>
+        <artifactId>reactor-bus</artifactId>
+        <version>${reactor.bus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.projectreactor</groupId>
+        <artifactId>reactor-core</artifactId>
+        <version>${reactor.bus.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <distributionManagement>
     <repository>
