@@ -102,10 +102,6 @@ public class FileUtil {
 
   public static String getFilename(String filepath) {
     Path path = Paths.get(filepath);
-    if (path == null) {
-      return null;
-    }
-
     return path.getFileName().toString();
   }
 
@@ -142,13 +138,9 @@ public class FileUtil {
     }
   }
 
-  public static String getParent(String filepath) {
+    public static String getParent(String filepath) {
     log.info("(getParent)filepath: {}", filepath);
     Path file = Paths.get(filepath);
-    if (file == null) {
-      return null;
-    }
-
     Path parent = file.getParent();
     if (parent == null) {
       return null;

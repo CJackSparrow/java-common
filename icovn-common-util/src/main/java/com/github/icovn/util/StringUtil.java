@@ -12,6 +12,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StringUtil {
 
+  public static String removeAccent(String s) {
+    StringBuilder sb = new StringBuilder(s);
+    for (int i = 0; i < sb.length(); i++) {
+      sb.setCharAt(i, removeAccent(sb.charAt(i)));
+    }
+    return sb.toString();
+  }
+  private static char removeAccent(char ch) {
+    String special = "àÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬđĐèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆìÌỉỈĩĨíÍịỊòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰýÝỹỸỳỲỷỶỵỴ :+\\<>\"*,!?%$=@#~[]`|^'.;＆&";
+    String replace = "aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAdDeEeEeEeEeEeEeEeEeEeEeEiIiIiIiIiIoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOoOuUuUuUuUuUuUuUuUuUuUuUyYyYyYyYyY----\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0----";
+    int index = special.indexOf(ch);
+    if (index >= 0) {
+      ch = replace.charAt(index);
+    }
+    return ch;
+  }
+
   public static String toNative(String input) {
     return "\"" + input + "\"";
   }
@@ -29,62 +46,25 @@ public class StringUtil {
     return textBuilder.toString();
   }
 
-  // region CONVERT FROM STRING
-  public static long getLong(String input, Long defaultValue) {
-    try {
-      log.debug("getLong|" + input);
-      return Long.parseLong(input);
-    } catch (Exception ex) {
-      return defaultValue;
-    }
-  }
-
-  public static Integer getInteger(String input, Integer defaultValue) {
-    try {
-      log.debug("getInteger|" + input);
-      return Integer.parseInt(input);
-    } catch (Exception ex) {
-      return defaultValue;
-    }
-  }
-
-  public static Boolean getBoolean(String input, Boolean defaultValue) {
-    try {
-      log.debug("getInteger|" + input);
-      return Boolean.parseBoolean(input);
-    } catch (Exception ex) {
-      return defaultValue;
-    }
-  }
-
-  // old function
-  public static boolean isValid(String input) {
-    if (input != null) {
-      if (input.trim().equals("")) {
-        return false;
-      } else {
-        return true;
+  public static String toUrlFriendly(String s) {
+    int maxLength = Math.min(s.length(), 236);
+    char[] buffer = new char[maxLength];
+    int n = 0;
+    for (int i = 0; i < maxLength; i++) {
+      char ch = s.charAt(i);
+      buffer[n] = removeAccent(ch);
+      // skip not printable characters
+      if (buffer[n] > 31) {
+        n++;
       }
-    } else {
-      return false;
     }
+    // skip trailing slashes
+    while (n > 0 && buffer[n - 1] == '/') {
+      n--;
+    }
+
+    String result = String.valueOf(buffer, 0, n);
+    result = result.replaceAll("\\/", "");
+    return result;
   }
-  // endregion
-
-  // region FILE & FOLDER PATH
-  /**
-   * Get parent folder
-   *
-   * @param folderPath /u03/hls/1/DKQ1ZXHH
-   * @return /u03/hls/1/
-   */
-  public static String getParentFolder(String folderPath) {
-    int lastIndex = folderPath.lastIndexOf('/');
-    return folderPath.substring(0, lastIndex + 1);
-  }
-  // endregion
-
-  // region PROCESS STRING (FFPROBE INPUT)
-
-  // endregion
 }

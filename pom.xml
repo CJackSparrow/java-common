@@ -33,6 +33,8 @@
     <module>icovn-common-util</module>
 
     <module>try-custom-repository</module>
+    <module>open-source-ftp4j</module>
+    <module>try-spring-cloud-zoo-keeper</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -167,6 +169,11 @@
         <groupId>com.github.icovn</groupId>
         <version>2.47-RELEASE</version>
       </dependency>
+      <dependency>
+        <artifactId>ftp4j</artifactId>
+        <groupId>it.sauronsoftware</groupId>
+        <version>1.0-FINAL</version>
+      </dependency>
 
       <dependency>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -214,6 +221,12 @@
         <groupId>io.projectreactor</groupId>
         <artifactId>reactor-core</artifactId>
         <version>${reactor.bus.version}</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>commons-lang3</artifactId>
+        <groupId>org.apache.commons</groupId>
+        <version>3.4</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

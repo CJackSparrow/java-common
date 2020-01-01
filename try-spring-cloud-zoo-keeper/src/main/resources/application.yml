@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    zookeeper:
+      config:
+        enabled: true
+        root: configuration
+        defaultContext: apps
+        profileSeparator: '::'
+      connect-string: localhost:2181

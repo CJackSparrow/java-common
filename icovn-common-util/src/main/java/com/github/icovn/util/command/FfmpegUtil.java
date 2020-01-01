@@ -1,7 +1,7 @@
 package com.github.icovn.util.command;
 
 import static com.github.icovn.util.ExceptionUtil.getFullStackTrace;
-import static com.github.icovn.util.StringUtil.getLong;
+import static com.github.icovn.util.ConvertUtils.getLong;
 
 import com.github.icovn.util.MapperUtil;
 import lombok.extern.slf4j.Slf4j;

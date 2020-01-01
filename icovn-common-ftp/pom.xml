@@ -11,5 +11,36 @@
 
   <artifactId>icovn-common-ftp</artifactId>
 
+  <dependencies>
+    <!--SPRING-BASE-->
+    <dependency>
+      <artifactId>dependency-spring-base</artifactId>
+      <groupId>com.github.icovn</groupId>
+      <type>pom</type>
+    </dependency>
 
+    <!--FTP4J CLIENT-->
+    <dependency>
+      <artifactId>ftp4j</artifactId>
+      <groupId>it.sauronsoftware</groupId>
+    </dependency>
+
+    <!--FTP CLIENT-->
+    <dependency>
+      <artifactId>commons-lang3</artifactId>
+      <groupId>org.apache.commons</groupId>
+    </dependency>
+
+    <!--APACHE COMMON-->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+      <version>3.3</version>
+    </dependency>
+  </dependencies>
 </project>
