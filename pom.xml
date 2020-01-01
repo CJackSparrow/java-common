@@ -35,6 +35,7 @@
     <module>try-custom-repository</module>
     <module>open-source-ftp4j</module>
     <module>try-spring-cloud-zoo-keeper</module>
+    <module>try-common-service</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -50,6 +51,7 @@
     <google.api.version>1.23.0</google.api.version>
     <google.api.drive.version>v3-rev110-1.23.0</google.api.drive.version>
     <reactor.bus.version>2.0.8.RELEASE</reactor.bus.version>
+    <rsql.parser.version>2.1.0</rsql.parser.version>
     <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
     <spring.cloud.version>Hoxton.RELEASE</spring.cloud.version>
   </properties>

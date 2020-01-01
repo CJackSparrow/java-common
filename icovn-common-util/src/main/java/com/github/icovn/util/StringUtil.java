@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -31,6 +32,19 @@ public class StringUtil {
 
   public static String toNative(String input) {
     return "\"" + input + "\"";
+  }
+
+  public static String toRaw(List<String> ids) {
+    if (ids == null || ids.isEmpty()) {
+      return "";
+    }
+
+    String output = "";
+    for (String id : ids) {
+      output += "'" + id + "',";
+    }
+
+    return output.substring(0, output.length() - 1);
   }
 
   public static String toString(InputStream inputStream) throws IOException {

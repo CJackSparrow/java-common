@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitmqConsumerConfig {
+public class RabbitmqConsumerConfiguration {
 
   @Value("${rabbitmq.concurrent.consumers:5}")
   private int concurrentConsumers;

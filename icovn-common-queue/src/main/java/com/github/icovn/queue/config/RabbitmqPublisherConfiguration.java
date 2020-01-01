@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Primary;
     "com.github.icovn.queue.service"
 })
 @Slf4j
-public class RabbitmqPublisherConfig {
+public class RabbitmqPublisherConfiguration {
 
   @PostConstruct
   public void postConstruct() {

@@ -1,4 +1,4 @@
-package com.github.icovn.queue.config;
+package com.github.icovn.service.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Import;
 
-@Import({RabbitmqConsumerConfiguration.class})
+@Import({JpaAuditConfiguration.class})
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface EnableRabbitmqConsumer {}
+public @interface EnableJpaAudit {}
