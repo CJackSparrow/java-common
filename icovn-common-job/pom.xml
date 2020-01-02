@@ -19,7 +19,7 @@
       <type>pom</type>
     </dependency>
 
-    <!-- Quartz -->
+    <!--Quartz -->
     <dependency>
       <groupId>org.quartz-scheduler</groupId>
       <artifactId>quartz</artifactId>
@@ -31,6 +31,16 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
+    </dependency>
+
+    <!--Test-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>h2</artifactId>
+      <groupId>com.h2database</groupId>
     </dependency>
   </dependencies>
 </project>
